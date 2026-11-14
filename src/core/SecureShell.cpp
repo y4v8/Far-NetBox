@@ -1328,7 +1328,7 @@ UnicodeString TSecureShell::ReceiveLine()
         const auto Ch = Pending[Index++];
         EOL = (Ch == '\n' || Ch == '\0');
       }
-      if (Index > 256)
+      if (Index > 32768)
       {
         LargePendingLine = true;
       }
