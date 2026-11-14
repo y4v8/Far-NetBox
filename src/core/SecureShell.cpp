@@ -1367,15 +1367,10 @@ UnicodeString TSecureShell::ReceiveLine()
       NeedsHexLogging = true;
       break;
     }
-    if (!GetUtfStrings() && Ch >= 0x80)
-    {
-      NeedsHexLogging = true;
-      break;
-    }
   }
 
   // Also hex-log if UTF-8 conversion produced replacement characters (invalid sequences)
-  if (!NeedsHexLogging && GetUtfStrings() && (Result.Pos(L'\xFFFD') > 0))
+  if (!NeedsHexLogging && (Result.Pos(L'\xFFFD') > 0))
   {
     NeedsHexLogging = true;
   }
